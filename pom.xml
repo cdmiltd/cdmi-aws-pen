@@ -7,7 +7,6 @@
 		<groupId>pw.cdmi</groupId>
 		<artifactId>cdmi-parent</artifactId>
 		<version>5.0.1-SNAPSHOT</version>
-		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pw.cdmi.aws</groupId>
 	<artifactId>cdmi-aws-pen</artifactId>
