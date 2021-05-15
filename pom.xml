@@ -177,13 +177,13 @@
              <artifactId>spring-boot-starter-mail</artifactId>
          </dependency>
 	</dependencies>
-	<repositories>
+<!--	<repositories>
 		<repository>
 			<id>pdf2Data</id>
 			<name>pdf2Data Maven Repository</name>
 			<url>https://repo.itextsupport.com/pdf2data</url>
 		</repository>
-	</repositories>
+	</repositories>-->
 	<modules>
 		<module>../cdmi-parent</module>
 		<module>../cdmi-core</module>
