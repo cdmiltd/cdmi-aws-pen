@@ -184,4 +184,9 @@
 			<url>https://repo.itextsupport.com/pdf2data</url>
 		</repository>
 	</repositories>
+	<modules>
+		<module>../cdmi-parent</module>
+		<module>../cdmi-core</module>
+		<module>../cdmi-http-core</module>
+	</modules>
 </project>
