@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>pw.cdmi.aws</groupId>
 	<artifactId>cdmi-aws-pen</artifactId>
+	<version>1.0.1-SNAPSHOT</version>
 	<description>点阵智慧笔项目</description>
 
 	<properties>
