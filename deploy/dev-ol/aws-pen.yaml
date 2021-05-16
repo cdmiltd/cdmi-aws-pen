@@ -6,7 +6,7 @@ metadata:
     component: aws-pen-dev
     tier: backend
   name: aws-pen-dev
-  namespace: edu-pen
+  namespace: edu-pen-dev
 spec:
   progressDeadlineSeconds: 600
   replicas: 1

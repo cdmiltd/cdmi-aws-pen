@@ -5,7 +5,7 @@ metadata:
     app: cdmi-pen
     component: aws-pen-dev
   name: aws-pen-dev
-  namespace: edu-pen
+  namespace: edu-pen-dev
 spec:
   ports:
     - name: http

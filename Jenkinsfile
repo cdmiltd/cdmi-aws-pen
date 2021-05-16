@@ -20,13 +20,13 @@ pipeline {
     }
 
     stages {
-        stage ('checkout scm') {
+        stage ('Checkout SCM') {
             steps {
                 checkout(scm)
             }
         }
 
-        stage ('unit test') {
+        stage ('Unit Test') {
             steps {
                 container ('maven') {
                     sh 'mvn clean  -gs `pwd`/deploy/settings.xml test'
@@ -34,10 +34,10 @@ pipeline {
             }
         }
 
-        stage ('build & push') {
+        stage ('Build & Push') {
             steps {
                 container ('maven') {
-                    sh 'mvn  -Dmaven.test.skip=true -gs `pwd`/configuration/settings.xml clean package'
+                    sh 'mvn  -Dmaven.test.skip=true -gs `pwd`/deploy/settings.xml clean package'
                     sh 'docker build -f Dockerfile-online -t $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER .'
                     withCredentials([usernamePassword(passwordVariable : 'DOCKER_PASSWORD' ,usernameVariable : 'DOCKER_USERNAME' ,credentialsId : "$DOCKER_CREDENTIAL_ID" ,)]) {
                         sh 'echo "$DOCKER_PASSWORD" | docker login $REGISTRY -u "$DOCKER_USERNAME" --password-stdin'
@@ -49,7 +49,7 @@ pipeline {
 
         stage('push latest'){
            when{
-             branch 'master'
+             branch 'main'
            }
            steps{
                 container ('maven') {
@@ -61,7 +61,7 @@ pipeline {
 
         stage('deploy to dev') {
           when{
-            branch 'master'
+            branch 'main'
           }
           steps {
             input(id: 'deploy-to-dev', message: 'deploy to dev?')
