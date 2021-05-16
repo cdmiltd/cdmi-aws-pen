@@ -14,7 +14,7 @@ pipeline {
         GITHUB_CREDENTIAL_ID = 'github-id'
         KUBECONFIG_CREDENTIAL_ID = 'aws-kubeconfig'
         REGISTRY = 'docker.io'
-        DOCKERHUB_NAMESPACE = 'cdmi-aws'
+        DOCKERHUB_NAMESPACE = 'cdzaxy'
         GITHUB_ACCOUNT = 'cdmiltd'
         APP_NAME = 'cdmi-aws-pen'
     }
@@ -47,7 +47,7 @@ pipeline {
             }
         }
 
-        stage('push latest'){
+        stage('Push Latest'){
            when{
              branch 'main'
            }
@@ -59,7 +59,7 @@ pipeline {
            }
         }
 
-        stage('deploy to dev') {
+        stage('Deploy to dev') {
           when{
             branch 'main'
           }
@@ -68,7 +68,7 @@ pipeline {
             kubernetesDeploy(configs: 'deploy/dev-ol/**', enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
           }
         }
-        stage('push with tag'){
+        stage('Push with Tag'){
           when{
             expression{
               return params.TAG_NAME =~ /v.*/
@@ -79,7 +79,7 @@ pipeline {
                 input(id: 'release-image-with-tag', message: 'release image with tag?')
                   withCredentials([usernamePassword(credentialsId: "$GITHUB_CREDENTIAL_ID", passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh 'git config --global user.email "wuwei@cdmi.ltd" '
-                    sh 'git config --global user.name "cdmiltd" '
+                    sh 'git config --global user.name "$GITHUB_ACCOUNT" '
                     sh 'git tag -a $TAG_NAME -m "$TAG_NAME" '
                     sh 'git push http://$GIT_USERNAME:$GIT_PASSWORD@github.com/$GITHUB_ACCOUNT/cdmi-aws-pen.git --tags --ipv4'
                   }
@@ -88,7 +88,7 @@ pipeline {
           }
           }
         }
-        stage('deploy to production') {
+        stage('Deploy to Production') {
           when{
             expression{
               return params.TAG_NAME =~ /v.*/
