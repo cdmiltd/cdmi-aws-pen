@@ -11,11 +11,11 @@ pipeline {
 
     environment {
         DOCKER_CREDENTIAL_ID = 'dockerhub-id'
-        GITHUB_CREDENTIAL_ID = 'github-id'
+        GITHUB_CREDENTIAL_ID = 'aliyun-github-id'
         KUBECONFIG_CREDENTIAL_ID = 'aws-kubeconfig'
         REGISTRY = 'docker.io'
         DOCKERHUB_NAMESPACE = 'cdmi-aws'
-        GITHUB_ACCOUNT = 'cdmiltd'
+        GITHUB_ACCOUNT = '38717646074201077'
         APP_NAME = 'cdmi-aws-pen'
     }
 
