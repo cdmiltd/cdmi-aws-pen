@@ -9,7 +9,6 @@
             <name>mirror</name>
             <url>https://maven.aliyun.com/nexus/content/groups/public</url>
         </mirror>
-
     </mirrors>
     <servers>
         <server>
