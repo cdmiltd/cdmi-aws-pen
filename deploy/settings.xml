@@ -9,6 +9,7 @@
             <name>mirror</name>
             <url>https://maven.aliyun.com/nexus/content/groups/public</url>
         </mirror>
+
     </mirrors>
     <servers>
         <server>
@@ -24,18 +25,6 @@
     </servers>
     <profiles>
         <profile>
-            <id>jdk-1.8</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-                <jdk>1.8</jdk>
-            </activation>
-            <properties>
-                <maven.compiler.source>1.8</maven.compiler.source>
-                <maven.compiler.target>1.8</maven.compiler.target>
-                <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
-            </properties>
-        </profile>
-        <profile>
             <id>rdc</id>
             <properties>
                 <altReleaseDeploymentRepository>
@@ -45,9 +34,92 @@
                     rdc-snapshots::default::https://packages.aliyun.com/maven/repository/2103345-snapshot-VnUPUJ/
                 </altSnapshotDeploymentRepository>
             </properties>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>https://maven.aliyun.com/nexus/content/groups/public</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>snapshots</id>
+                    <url>https://maven.aliyun.com/nexus/content/groups/public</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>rdc-releases</id>
+                    <url>https://packages.aliyun.com/maven/repository/2103345-release-CZspgN/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>rdc-snapshots</id>
+                    <url>https://packages.aliyun.com/maven/repository/2103345-snapshot-VnUPUJ/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>https://maven.aliyun.com/nexus/content/groups/public</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>snapshots</id>
+                    <url>https://maven.aliyun.com/nexus/content/groups/public</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>rdc-releases</id>
+                    <url>https://packages.aliyun.com/maven/repository/2103345-release-CZspgN/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>rdc-snapshots</id>
+                    <url>https://packages.aliyun.com/maven/repository/2103345-snapshot-VnUPUJ/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
         </profile>
     </profiles>
-
     <activeProfiles>
         <activeProfile>rdc</activeProfile>
     </activeProfiles>
